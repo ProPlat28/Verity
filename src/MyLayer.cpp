@@ -19,7 +19,7 @@ bool MyLayer::init() {
     audio->stopMusic(0);
     audio->playMusic("Verity.mp3", true, 0.0f, 0);
     }
-    void MoreGames::keyBackClicked() {
+    void onMoreGames::keyBackClicked() {
     auto audio = FMODAudioEngine::sharedEngine();
     audio->stopMusic(0);
     audio->playMusic("menuLoop.mp3", true, 0.0f, 0);
