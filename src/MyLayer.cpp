@@ -19,12 +19,16 @@ bool MyLayer::init() {
     audio->stopMusic(0);
     audio->playMusic("Verity.mp3", true, 0.0f, 0);
     }
-    {
+    void MoreGames::keyBackClicked() {
     auto audio = FMODAudioEngine::sharedEngine();
     audio->stopMusic(0);
     audio->playMusic("menuLoop.mp3", true, 0.0f, 0);
-    }
 
+    CCDirector::sharedDirector()->popSceneWithTransition(
+        0.5f,
+        PopTransition::kPopTransitionFade
+    );
+}
     auto winSize = CCDirector::sharedDirector()->getWinSize();
        
     auto background = createLayerBG();
