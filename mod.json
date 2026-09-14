@@ -1,0 +1,19 @@
+{
+	"geode": "5.9.0",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "proplat.verity",
+	"name": "Verity",
+	"version": "v1.0.0",
+	"developer": "ProPlat",
+	"description": "",
+	"resources": {
+		"sprites": [
+			"ressources/Verity.mp3"
+		]
+	}
+}
