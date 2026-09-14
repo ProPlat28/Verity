@@ -15,12 +15,12 @@ bool MyLayer::init() {
     if (!CCLayer::init()) return false;
 
     auto audio = FMODAudioEngine::sharedEngine();
-    audio->stopMusic();
-    audio->playMusic("Verity.mp3", true, 1.0f);
-    
+    audio->stopMusic(0);
+    audio->playMusic("Verity.mp3", true, 0.0f, 0);
+
     auto audio = FMODAudioEngine::sharedEngine();
-    audio->stopMusic();
-    audio->playMusic("menuLoop.mp3", true, 1.0f);
+    audio->stopMusic(0);
+    audio->playMusic("menuLoop.mp3", true, 0.0f, 0);
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
        
