@@ -14,13 +14,16 @@ CCScene* MyLayer::scene() {
 bool MyLayer::init() {
     if (!CCLayer::init()) return false;
 
+    {
     auto audio = FMODAudioEngine::sharedEngine();
     audio->stopMusic(0);
     audio->playMusic("Verity.mp3", true, 0.0f, 0);
-
+    }
+    {
     auto audio = FMODAudioEngine::sharedEngine();
     audio->stopMusic(0);
     audio->playMusic("menuLoop.mp3", true, 0.0f, 0);
+    }
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
        
@@ -47,4 +50,4 @@ bool MyLayer::init() {
 
 void MyLayer::keyBackClicked() {
     CCDirector::sharedDirector()->popSceneWithTransition(0.5f, PopTransition::kPopTransitionFade);
-}
+};
