@@ -14,12 +14,7 @@ CCScene* MyLayer::scene() {
 bool MyLayer::init() {
     if (!CCLayer::init()) return false;
 
-    {
-    auto audio = FMODAudioEngine::sharedEngine();
-    audio->stopMusic(0);
-    audio->playMusic("Verity.mp3", true, 0.0f, 0);
-    }
-    void onMoreGames::keyBackClicked() {
+    void MyLayer::keyBackClicked() {
     auto audio = FMODAudioEngine::sharedEngine();
     audio->stopMusic(0);
     audio->playMusic("menuLoop.mp3", true, 0.0f, 0);
@@ -28,7 +23,39 @@ bool MyLayer::init() {
         0.5f,
         PopTransition::kPopTransitionFade
     );
+   }
+
+    CCScene* MyLayer::scene() {
+    auto layer = MyLayer::create();
+    auto scene = CCScene::create();
+    scene->addChild(layer);
+
+    return scene;
 }
+
+bool MyLayer::init() {
+    if (!CCLayer::init()) return false;
+
+    {
+        auto audio = FMODAudioEngine::sharedEngine();
+        audio->stopMusic(0);
+        audio->playMusic("Verity.mp3", true, 0.0f, 0);
+    }
+
+    return true;
+    }
+
+    void MyLayer::keyBackClicked() {
+        auto audio = FMODAudioEngine::sharedEngine();
+        audio->stopMusic(0);
+        audio->playMusic("menuLoop.mp3", true, 0.0f, 0);
+
+    CCDirector::sharedDirector()->popSceneWithTransition(
+        0.5f,
+        PopTransition::kPopTransitionFade
+        );
+    }
+    
     auto winSize = CCDirector::sharedDirector()->getWinSize();
        
     auto background = createLayerBG();
