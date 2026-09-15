@@ -32,7 +32,6 @@ void MyLayer::keyBackClicked() {
         PopTransition::kPopTransitionFade
     );
 }
-bool MyLayer::init() {
     if (!CCLayer::init()) return false;
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
@@ -58,6 +57,5 @@ bool MyLayer::init() {
     return true;
 }
 
-void MyLayer::keyBackClicked() {
     CCDirector::sharedDirector()->popSceneWithTransition(0.5f, PopTransition::kPopTransitionFade);
 }
