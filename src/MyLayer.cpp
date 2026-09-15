@@ -10,12 +10,10 @@ CCScene* MyLayer::scene() {
 
     return scene;
 }
+
 bool MyLayer::init() {
     if (!CCLayer::init()) return false;
-
     FMODAudioEngine::sharedEngine()->playMusic("Verity.mp3", true, 1.0f, 0);
-    
-    }
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
        
