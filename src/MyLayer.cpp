@@ -21,7 +21,7 @@ bool MyLayer::init() {
     auto winSize = CCDirector::sharedDirector()->getWinSize();
        
     auto background = createLayerBG();
-    background->setColor({ 255, 0, 0 });
+    background->setColor({ 0, 88, 219 });
     this->addChild(background);
 
     auto menu = CCMenu::create();
@@ -35,7 +35,7 @@ bool MyLayer::init() {
     this->addChild(text);
 
     auto backBtn = addBackButton(this);
-    backBtn->setPosition({ (0 - (winSize.width / 2)) + 17.f, (winSize.height / 2) - 17.f });
+    backBtn->setPosition({ (0 - (winSize.width / 2)) + 22.f, (winSize.height / 2) - 22.f });
     menu->addChild(backBtn);
 
     return true;
@@ -44,7 +44,7 @@ bool MyLayer::init() {
 void MyLayer::keyBackClicked() {
     if (auto audio = FMODAudioEngine::sharedEngine())
     audio->stopAllMusic(true);
-
+    GameManager::sharedState()->stopMusic();
     GameManager::sharedState()->playMenuMusic();
     
     CCDirector::sharedDirector()->popSceneWithTransition(0.5f, PopTransition::kPopTransitionFade);
