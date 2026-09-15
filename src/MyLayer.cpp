@@ -44,7 +44,7 @@ bool MyLayer::init() {
 void MyLayer::keyBackClicked() {
     if (auto audio = FMODAudioEngine::sharedEngine())
     audio->stopAllMusic(true);
-    GameManager::sharedState()->stopMusic();
+    FMODAudioEngine::sharedEngine()->stopMusic(true);
     GameManager::sharedState()->playMenuMusic();
     
     CCDirector::sharedDirector()->popSceneWithTransition(0.5f, PopTransition::kPopTransitionFade);
