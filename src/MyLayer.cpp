@@ -12,27 +12,11 @@ CCScene* MyLayer::scene() {
 }
 
 bool MyLayer::init() {
-    if (!CCLayer::init())
-        return false;
+    if (!CCLayer::init()) return false;
 
     auto audio = FMODAudioEngine::sharedEngine();
     audio->stopMusic(0);
     audio->playMusic("Verity.mp3", true, 0.0f, 0);
-
-    return true;
-}
-
-void MyLayer::keyBackClicked() {
-    auto audio = FMODAudioEngine::sharedEngine();
-    audio->stopMusic(0);
-    audio->playMusic("menuLoop.mp3", true, 0.0f, 0);
-
-    CCDirector::sharedDirector()->popSceneWithTransition(
-        0.5f,
-        PopTransition::kPopTransitionFade
-    );
-}
-    if (!CCLayer::init()) return false;
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
        
@@ -51,11 +35,17 @@ void MyLayer::keyBackClicked() {
     this->addChild(text);
 
     auto backBtn = addBackButton(this);
-    backBtn->setPosition({ (0 - (winSize.width / 2)) + 20.f, (winSize.height / 2) - 20.f });
+    backBtn->setPosition({ (0 - (winSize.width / 2)) + 17.f, (winSize.height / 2) - 17.f });
     menu->addChild(backBtn);
 
     return true;
 }
 
+void MyLayer::keyBackClicked() {
+    if (auto audio = FMODAudioEngine::sharedEngine())
+    audio->stopAllMusic(true);
+
+    GameManager::sharedState()->playMenuMusic();
+    
     CCDirector::sharedDirector()->popSceneWithTransition(0.5f, PopTransition::kPopTransitionFade);
 }
