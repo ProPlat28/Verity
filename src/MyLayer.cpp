@@ -10,13 +10,12 @@ CCScene* MyLayer::scene() {
 
     return scene;
 }
-
 bool MyLayer::init() {
     if (!CCLayer::init()) return false;
 
-    auto audio = FMODAudioEngine::sharedEngine();
-    audio->stopMusic(0);
-    audio->playMusic("Verity.mp3", true, 0.0f, 0);
+    FMODAudioEngine::sharedEngine()->playMusic("Verity.mp3", true, 1.0f, 0);
+    
+    }
 
     auto winSize = CCDirector::sharedDirector()->getWinSize();
        
@@ -42,10 +41,12 @@ bool MyLayer::init() {
 }
 
 void MyLayer::keyBackClicked() {
-    if (auto audio = FMODAudioEngine::sharedEngine())
-    audio->stopAllMusic(true);
-    FMODAudioEngine::sharedEngine()->stopMusic(true);
-    GameManager::sharedState()->playMenuMusic();
-    
-    CCDirector::sharedDirector()->popSceneWithTransition(0.5f, PopTransition::kPopTransitionFade);
+    auto engine = FMODAudioEngine::sharedEngine();
+
+    engine->stopMusic(true);
+
+    CCDirector::sharedDirector()->popSceneWithTransition(
+        0.5f,
+        PopTransition::kPopTransitionFade
+    );
 }
